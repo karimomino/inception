@@ -1,8 +1,10 @@
 #!bin/bash
 
+sleep 5
 
 if [ ! -f "/var/www/wordpress/wp-config.php" ]
 then
+echo "hello"
     wp config create    --allow-root \
                         --dbname=$MYSQL_DATABASE \
                         --dbuser=$MYSQL_USER \

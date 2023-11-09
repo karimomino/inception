@@ -14,6 +14,7 @@ RUN apk add --no-cache \
 	php-phar \
 	php-fpm \
 	php-mysqli \
+	php-iconv \
 	mariadb-client
 
 RUN	wget https://wordpress.org/wordpress-6.3.2.tar.gz -P /var/www
