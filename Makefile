@@ -13,7 +13,7 @@ clean:
 	docker rmi -f $$(docker images -qa);\
 	docker volume rm $$(docker volume ls -q);\
 	docker network rm $$(docker network ls -q);\
-	rm -rf /Users/42dev/.inception/data/wordpress/*
-	rm -rf /Users/42dev/.inception/data/mariadb/*
+	rm -rf ~/.inception/data/wordpress/*
+	rm -rf ~/.inception/data/mariadb/*
 
 .PHONY: all re down clean
