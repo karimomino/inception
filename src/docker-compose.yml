@@ -1,0 +1,64 @@
+version: '1.0'
+
+services:
+  nginx:
+    container_name: nginx42
+    build: ./containers/nginx
+    image: "nginx42:${VERSION}"
+    ports:
+      - 443:443
+    volumes:
+      - wordpress:/var/www/wordpress
+    depends_on:
+      - wordpress
+    
+    restart: on-failure
+    networks:
+      - inception
+
+  mariadb:
+    container_name: mariadb
+    build: ./containers/mariadb
+    image: "mariadb42:${VERSION}"
+    volumes:
+      - mariadb:/var/lib/mysql
+    networks:
+      - inception
+    # restart: unless-stopped
+    expose:
+    - "3306"
+    env_file:
+      - .env
+
+  wordpress:
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    build:
+      context: ./containers/wordpress
+      dockerfile: Dockerfile
+    restart: on-failure
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/wordpress
+    networks:
+      - inception
+
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      device: /Users/42dev/.inception/data/mariadb
+      o: bind
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: /Users/42dev/.inception/data/wordpress
+      o: bind
+
+networks:
+  inception:
+    driver: bridge
