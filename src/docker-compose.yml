@@ -50,13 +50,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ~/.inception/data/mariadb
+      device: /home/kamin/data/mariadb
       o: bind
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: ~/.inception/data/wordpress
+      device: /home/kamin/data/wordpress
       o: bind
 
 networks:

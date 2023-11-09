@@ -8,5 +8,5 @@ wp config create    --allow-root \
                     --dbpass=$MYSQL_PASSWORD \
                     --dbhost=mariadb:3306 --path='/var/www/wordpress'
 
-/usr/sbin/php-fpm8 -F
+/usr/sbin/php-fpm81 -F
 
