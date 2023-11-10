@@ -7,7 +7,6 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.14/community" >> /etc/apk/repo
 
 RUN apk update
 
-#installing required packages
 RUN apk add --no-cache \
 	wget \
 	php \
@@ -40,4 +39,4 @@ EXPOSE 9000
 
 ENTRYPOINT [ "sh" , "/tmp/setup.sh" ]
 
-# CMD ["/usr/sbin/php-fpm", "-F"]
+CMD ["/usr/sbin/php-fpm81", "-F"]

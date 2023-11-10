@@ -2,16 +2,14 @@ version: '1.0'
 
 services:
   nginx:
-    container_name: nginx42
+    container_name: nginx
     build: ./containers/nginx
-    image: "nginx42:${VERSION}"
     ports:
       - 443:443
     volumes:
       - wordpress:/var/www/wordpress
     depends_on:
       - wordpress
-    
     restart: on-failure
     networks:
       - inception
@@ -19,12 +17,11 @@ services:
   mariadb:
     container_name: mariadb
     build: ./containers/mariadb
-    image: "mariadb42:${VERSION}"
     volumes:
       - mariadb:/var/lib/mysql
     networks:
       - inception
-    # restart: unless-stopped
+    restart: on-failure
     expose:
     - "3306"
     env_file:
