@@ -24,7 +24,7 @@ RUN	chown -R root:root /var/www/wordpress
 
 RUN rm /etc/php81/php-fpm.d/www.conf
 
-COPY ./config/www.conf /etc/php81/php-fpm.d/www.conf
+COPY ./conf/www.conf /etc/php81/php-fpm.d/www.conf
 COPY ./tools/setup.sh /tmp/setup.sh
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar

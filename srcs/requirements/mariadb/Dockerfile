@@ -9,7 +9,7 @@ RUN apk add --no-cache mysql \
 COPY tools/create_db.sh /tmp
 
 RUN rm /etc/my.cnf
-COPY config/my.cnf /etc/my.cnf
+COPY conf/my.cnf /etc/my.cnf
 
 RUN mkdir /var/run/mysqld \
   && touch /var/run/mysqld/mysqld.pid \
@@ -26,6 +26,3 @@ RUN chown -R mysql:mysql /var/lib/mysql
 ENTRYPOINT ["sh" , "/tmp/create_db.sh"]
 
 USER mysql
-
-# USER mysql
-

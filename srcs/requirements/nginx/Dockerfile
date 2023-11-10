@@ -24,7 +24,7 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
 RUN mkdir -p /var/run/nginx
 
 
-COPY ./config/nginx.conf /etc/nginx/
+COPY ./conf/nginx.conf /etc/nginx/
 
 EXPOSE	443
 
