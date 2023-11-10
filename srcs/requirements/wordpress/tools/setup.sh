@@ -2,7 +2,7 @@
 
 if [ ! -f "/var/www/wordpress/wp-config.php" ]
 then
-    while !wp config create    --allow-root \
+    while ! wp config create    --allow-root \
                         --dbname=$MYSQL_DATABASE \
                         --dbuser=$MYSQL_USER \
                         --dbpass=$MYSQL_PASSWORD \
