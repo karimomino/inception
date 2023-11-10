@@ -1,15 +1,13 @@
 #!bin/bash
 
-sleep 5
-
 if [ ! -f "/var/www/wordpress/wp-config.php" ]
 then
-echo "hello"
     wp config create    --allow-root \
                         --dbname=$MYSQL_DATABASE \
                         --dbuser=$MYSQL_USER \
                         --dbpass=$MYSQL_PASSWORD \
                         --dbhost=mariadb:3306 --path='/var/www/wordpress'
+    echo $?
 
     wp core install --url=${DOMAIN_NAME} --title="Inception"   \
         --admin_user=${WP_ADMIN_UNAME}                    \
