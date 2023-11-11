@@ -12,7 +12,7 @@ services:
       - wordpress
     restart: on-failure
     networks:
-      - inception
+      - wordpress
 
   mariadb:
     container_name: mariadb
@@ -20,7 +20,7 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     networks:
-      - inception
+      - mysql
     restart: on-failure
     expose:
     - "3306"
@@ -40,7 +40,10 @@ services:
     volumes:
       - wordpress:/var/www/wordpress
     networks:
-      - inception
+      - mysql
+      - wordpress
+    expose:
+      - "9000"
 
 volumes:
   mariadb:
@@ -57,5 +60,7 @@ volumes:
       o: bind
 
 networks:
-  inception:
+  wordpress:
+    driver: bridge
+  mysql:
     driver: bridge

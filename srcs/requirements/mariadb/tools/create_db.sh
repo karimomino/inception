@@ -11,7 +11,7 @@ if [ ! -d /var/lib/mysql/$MYSQL_DATABASE ]; then
     "
   mysqladmin --user=root --password=$MYSQL_ROOT_PASSWORD shutdown
 fi
-# rc-service --list
+
 sed -i "s|.*bind-address\s*=.*|bind-address=0.0.0.0|g" /etc/mysql/my.cnf
 sed -i "s|.*bind-address\s*=.*|bind-address=0.0.0.0|g" /etc/my.cnf.d/mariadb-server.cnf
 

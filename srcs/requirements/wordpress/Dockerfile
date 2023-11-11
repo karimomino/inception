@@ -34,9 +34,4 @@ RUN mv /wp-cli.phar /usr/local/bin/wp
 
 WORKDIR /var/www/wordpress/
 
-#We expose the 9000 port
-EXPOSE 9000
-
 ENTRYPOINT [ "sh" , "/tmp/setup.sh" ]
-
-CMD ["/usr/sbin/php-fpm81", "-F"]

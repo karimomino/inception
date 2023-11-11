@@ -6,7 +6,7 @@ RUN apk update
 RUN apk add --no-cache mysql \
     mysql-client
 
-COPY tools/create_db.sh /tmp
+COPY tools/create_db.sh /
 
 RUN rm /etc/my.cnf
 COPY conf/my.cnf /etc/my.cnf
@@ -22,7 +22,6 @@ EXPOSE 3306
 
 RUN chown -R mysql:mysql /var/lib/mysql
 
-
-ENTRYPOINT ["sh" , "/tmp/create_db.sh"]
+ENTRYPOINT ["sh" , "/create_db.sh"]
 
 USER mysql
