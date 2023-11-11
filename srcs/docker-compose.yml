@@ -23,7 +23,7 @@ services:
       - mysql
     restart: on-failure
     expose:
-    - "3306"
+      - "3306"
     env_file:
       - .env
 
@@ -40,8 +40,8 @@ services:
     volumes:
       - wordpress:/var/www/wordpress
     networks:
-      - mysql
       - wordpress
+      - mysql
     expose:
       - "9000"
 
